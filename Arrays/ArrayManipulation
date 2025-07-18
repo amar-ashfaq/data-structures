@@ -1,0 +1,24 @@
+function arrayManipulation(n, queries) {
+  let diff = new Array(n + 1).fill(0);
+
+  for (let i = 0; i < queries.length; i++) {
+    // destructure the array
+    let [a, b, k] = queries[i];
+
+    // apply the difference array technique
+    diff[a - 1] += k;
+    diff[b] -= k;
+  }
+
+  let sum = 0;
+  let max = -Infinity;
+
+  for (let j = 0; j < n; j++) {
+    sum += diff[j];
+
+    if (sum > max) {
+      max = sum;
+    }
+  }
+  return max;
+}
