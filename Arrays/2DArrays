@@ -1,2 +1,23 @@
 // Given a 2D array, find the maximum hourglass sum
-function hourglassSum(arr) {}
+function hourglassSum(arr) {
+  let sum = -Infinity;
+
+  for (let i = 0; i <= 3; i++) {
+    for (let j = 0; j <= 3; j++) {
+      let a = arr[i][j];
+      let b = arr[i][j + 1];
+      let c = arr[i][j + 2];
+
+      let d = arr[i + 1][j + 1];
+
+      let e = arr[i + 2][j];
+      let f = arr[i + 2][j + 1];
+      let g = arr[i + 2][j + 2];
+
+      if (a + b + c + d + e + f + g > sum) {
+        sum = a + b + c + d + e + f + g;
+      }
+    }
+  }
+  return sum;
+}
